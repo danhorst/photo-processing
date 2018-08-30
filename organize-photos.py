@@ -11,8 +11,8 @@ from datetime import datetime
 def photoDate(f):
   "Return the date/time on which the given photo was taken."
 
-  cDate = subprocess.check_output(['sips', '-g', 'creation', f])
-  cDate = cDate.split('\n')[1].lstrip().split(': ')[1]
+  cDate = subprocess.check_output(['exiftool', '-args', '-CreateDate', f])
+  cDate = cDate.split('=')[1].rstrip()
   return datetime.strptime(cDate, "%Y:%m:%d %H:%M:%S")
 
 
@@ -46,7 +46,7 @@ if not os.path.exists(errorDir):
 # Copy photos into year and month subfolders. Name the copies according to
 # their timestamps and the origional filename.
 for photo in photos:
-  # print "Processing %s..." % photo
+  print "Processing %s..." % photo
   original = sourceDir + '/' + photo
   try:
     pDate = photoDate(original)
