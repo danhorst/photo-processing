@@ -19,7 +19,7 @@ def photoDate(f):
 ###################### Main program ########################
 
 # Where the photos are and where they're going.
-destDir = '/Volumes/Photos'
+destDir = '/mnt/d'
 sourceDir = destDir + '/Queue'
 errorDir = destDir + '/Unsorted'
 
@@ -68,7 +68,7 @@ for photo in photos:
     duplicate = thisDestDir + '/%s' % (newname)
     shutil.copy2(original, duplicate)
   except Exception:
-    shutil.copy2(original, errorDir + photo)
+    shutil.copy2(original, errorDir + '/' + photo)
     problems.append(photo)
   except:
     sys.exit("Execution stopped.")
