@@ -4,6 +4,6 @@
 sudo mkdir /mnt/e
 sudo mount -t drvfs E: /mnt/e
 
-./organize-photos.py
+./organize-photos.py /mnt/e/DCIM/100CANON
 
 sudo umount /mnt/e
