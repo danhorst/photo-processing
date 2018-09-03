@@ -20,7 +20,12 @@ def photoDate(f):
 
 # Where the photos are and where they're going.
 destDir = '/mnt/d'
-sourceDir = destDir + '/Queue'
+
+if len(sys.argv) == 2:
+  sourceDir = sys.argv[1]
+else:
+  sourceDir = destDir + '/Queue'
+
 errorDir = destDir + '/Unsorted'
 
 # The format for the new file names.
