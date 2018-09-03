@@ -71,7 +71,10 @@ for photo in photos:
       os.makedirs(thisDestDir)
 
     duplicate = thisDestDir + '/%s' % (newname)
-    shutil.copy2(original, duplicate)
+    if os.path.isfile(duplicate):
+      sys.stdout.write('\nSkipping %s file already exists\n' % (duplicate))
+    else:
+      shutil.copy2(original, duplicate)
   except Exception:
     shutil.copy2(original, errorDir + '/' + photo)
     problems.append(photo)
