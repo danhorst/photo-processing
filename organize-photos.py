@@ -19,7 +19,7 @@ def photoDate(f):
 ###################### Main program ########################
 
 # Where the photos are and where they're going.
-destDir = '/mnt/d'
+destDir = '/mnt/f'
 
 if len(sys.argv) == 2:
   sourceDir = sys.argv[1]
