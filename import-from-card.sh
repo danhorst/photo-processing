@@ -10,11 +10,11 @@ else
 fi
 
 echo "Drive Setup"
-if [[ -d "/mnt/f/2020" ]]; then
+if [[ -d "/mnt/e/2020" ]]; then
   echo "Drive already mounted"
 else
-  sudo mkdir -p /mnt/f
-  sudo mount -t drvfs F: /mnt/f
+  sudo mkdir -p /mnt/e
+  sudo mount -t drvfs E: /mnt/e
 fi
 
 sudo ./organize-photos.py /mnt/d/DCIM/100CANON

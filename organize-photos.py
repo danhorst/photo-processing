@@ -19,7 +19,7 @@ def photoDate(f):
 ###################### Main program ########################
 
 # Where the photos are and where they're going.
-destDir = '/mnt/f'
+destDir = '/mnt/e'
 
 if len(sys.argv) == 2:
   sourceDir = sys.argv[1]
@@ -64,7 +64,7 @@ for photo in photos:
       lastYear = yr
     else:
       sys.stdout.write('.')
-    
+
     newname = pDate.strftime(fmt) + photo
     thisDestDir = destDir + '/%04d/%02d' % (yr, mo)
     if not os.path.exists(thisDestDir):
