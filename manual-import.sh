@@ -2,7 +2,7 @@
 # https://superuser.com/a/1209701
 
 echo "Drive Setup"
-if [[ -d "/mnt/e/2020" ]]; then
+if [[ -d "/mnt/e/2021" ]]; then
   echo "Drive already mounted"
 else
   sudo mkdir -p /mnt/e
