@@ -22,13 +22,13 @@ def photoDate(f):
 
 # Where the photos are and where they're going.
 destDir = 'D:\\'
+stagingDir = os.path.join(destDir, 'Queue')
+errorDir = os.path.join(destDir, 'Unsorted')
 
 if len(sys.argv) == 2:
   sourceDir = sys.argv[1]
 else:
-  sourceDir = os.path.join(destDir, '/Queue')
-
-errorDir = os.path.join(destDir, '/Unsorted')
+  sourceDir = stagingDir
 
 sys.stdout.write('\nProcessing photos from %s' % sourceDir)
 
@@ -77,11 +77,15 @@ for photo in photos:
     if not os.path.exists(thisDestDir):
       os.makedirs(thisDestDir)
 
-    duplicate = os.path.join(thisDestDir, '%s' % (newname))
-    if os.path.isfile(duplicate):
-      sys.stdout.write('\nSkipping %s file already exists\n' % (duplicate))
+    newFilePath = os.path.join(thisDestDir, '%s' % newname)
+    if os.path.isfile(newFilePath):
+      sys.stdout.write('\nSkipping %s file already exists\n' % newFilePath)
+    elif original.startswith(stagingDir):
+      sys.stdout.write('\nMoving file to: %s' % newFilePath)
+      os.rename(original, newFilePath)
     else:
-      shutil.copy2(original, duplicate)
+      sys.stdout.write('\nCopying file to: %s' % newFilePath)
+      shutil.copy2(original, newFilePath)
   except Exception as e:
     sys.stdout.write('\nError processing %s\n' % original)
     sys.stdout.write(getattr(e, 'message', repr(e)))
