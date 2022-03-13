@@ -21,14 +21,14 @@ def photoDate(f):
 ###################### Main program ########################
 
 # Where the photos are and where they're going.
-destDir = 'D:/'
+destDir = 'D:\\'
 
 if len(sys.argv) == 2:
   sourceDir = sys.argv[1]
 else:
-  sourceDir = destDir + '/Queue'
+  sourceDir = os.path.join(destDir, '/Queue')
 
-errorDir = destDir + '/Unsorted'
+errorDir = os.path.join(destDir, '/Unsorted')
 
 sys.stdout.write('\nProcessing photos from %s' % sourceDir)
 
@@ -61,7 +61,6 @@ for photo in photos:
   sys.stdout.write('\nOriginal file: %s' % original)
   try:
     pDate = photoDate(original)
-    sys.stdout.write('\nCreated date: %s' % pDate)
     yr = pDate.year
     mo = pDate.month
 
