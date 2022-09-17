@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import sys
 import os, shutil
@@ -21,7 +21,7 @@ def photoDate(f):
 ###################### Main program ########################
 
 # Where the photos are and where they're going.
-destDir = 'D:\\'
+destDir = '/mnt/d'
 stagingDir = os.path.join(destDir, 'Queue')
 errorDir = os.path.join(destDir, 'Unsorted')
 
